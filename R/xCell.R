@@ -47,6 +47,7 @@ xCellAnalysis <- function(expr, signatures=NULL, genes=NULL, spill=NULL, rnaseq=
     } else {
       spill = xCell.data$spill.array
     }
+    # 10808 genes and 489 signatures
   }
 
   # Caulcate average ssGSEA scores for cell types
@@ -56,6 +57,8 @@ xCellAnalysis <- function(expr, signatures=NULL, genes=NULL, spill=NULL, rnaseq=
     fn <- paste0(file.name,'_RAW.txt')
   }
 
+  
+  
   if (!is.null(cell.types.use)) {
     A = intersect(cell.types.use,rownames(spill$K))
     if (length(A)<length(cell.types.use)) {
@@ -84,6 +87,17 @@ xCellAnalysis <- function(expr, signatures=NULL, genes=NULL, spill=NULL, rnaseq=
   return(scores.adjusted)
 }
 
+
+
+
+
+
+
+
+
+
+
+
 #' Calculated raw xCell enrichment scores
 #'
 #' \code{rawEnrichmentAnalysis} Returns the raw xCell cell types enrichment scores.
@@ -100,6 +114,9 @@ rawEnrichmentAnalysis <- function(expr, signatures, genes, file.name = NULL, par
 
   # Reduce the expression dataset to contain only the required genes
   shared.genes <- intersect(rownames(expr), genes)
+  #########################################
+  # intersect 20621 genes with 10808 genes.
+  ########################################
   print(paste("Num. of genes:", length(shared.genes)))
   expr <- expr[shared.genes, ]
   if (dim(expr)[1] < 5000) {
