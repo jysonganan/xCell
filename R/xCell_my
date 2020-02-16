@@ -1,8 +1,4 @@
-#' xCell: A package for calculating cell type enrichments.
-#'
-#' @docType package
-#' @name xCell
-NULL
+
 
 #' xCell datasets
 #'
